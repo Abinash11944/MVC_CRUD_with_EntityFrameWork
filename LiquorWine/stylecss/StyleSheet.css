@@ -1,0 +1,106 @@
+﻿.user-profile {
+    border: 2px solid #ededed;
+    border-radius: 3px;
+    margin-bottom: 20px; /* Add some margin between user profiles for clarity */
+    position: relative; /* Added relative positioning to user-profile */
+}
+
+.user-profile-image {
+    height: 300px;
+    cursor: pointer;
+    position: relative;
+}
+
+    .user-profile-image:hover .upload-photo {
+        transform: translateY(0); /* Adjusted to move the upload-photo div near the bottom of user-profile-image */
+    }
+
+.upload-photo {
+    background-color: #242424;
+    opacity: 0.8; /* Increased opacity for better visibility */
+    width: 100%; /* Take up the full width of the user-profile-image */
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    transform: translateY(100%); /* Move it initially below user-profile-image */
+    transition: transform 0.3s ease;
+}
+
+    .upload-photo img {
+        height: 30px;
+        width: 30px;
+        color: #fff;
+        position: absolute;
+        top: 50%; /* Center the image vertically */
+        left: 10px;
+        transform: translate(0, -50%); /* Center the image horizontally and adjust vertically */
+    }
+
+.image-content {
+    display: none; /* Initially hide the content */
+    position: absolute;
+    top: 100%; /* Position below the upload-photo div */
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Background color for content */
+    padding: 10px; /* Add padding to the content */
+}
+
+.user-profile-image:hover .upload-photo .image-content {
+    display: block; /* Show the content when user-profile-image is hovered */
+}
+.user-profile {
+    border: 2px solid #ededed;
+    border-radius: 3px;
+    margin-bottom: 20px; /* Add some margin between user profiles for clarity */
+    position: relative; /* Added relative positioning to user-profile */
+}
+
+.user-profile-image {
+    height: 300px;
+    cursor: pointer;
+    position: relative;
+}
+
+    .user-profile-image:hover .upload-photo {
+        transform: translateY(0); /* Adjusted to move the upload-photo div near the bottom of user-profile-image */
+    }
+
+.upload-photo {
+    background-color: #242424;
+    opacity: 0.8; /* Increased opacity for better visibility */
+    width: 100%; /* Take up the full width of the user-profile-image */
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    transform: translateY(100%); /* Move it initially below user-profile-image */
+    transition: transform 0.3s ease;
+}
+
+    .upload-photo img {
+        height: 30px;
+        width: 30px;
+        color: #fff;
+        position: absolute;
+        top: 50%; /* Center the image vertically */
+        left: 10px;
+        transform: translate(0, -50%); /* Center the image horizontally and adjust vertically */
+    }
+
+.image-content {
+    display: none; /* Initially hide the content */
+    position: absolute;
+    top: 100%; /* Position below the upload-photo div */
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Background color for content */
+    padding: 10px; /* Add padding to the content */
+}
+
+.user-profile-image:hover .upload-photo .image-content {
+    display: block; /* Show the content when user-profile-image is hovered */
+}

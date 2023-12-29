@@ -1,0 +1,123 @@
+﻿@model IEnumerable<LiquorWine.Models.ShopTb>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center"><u>Shop Register</u></h2>
+<div class="container-fluid">
+
+    <div class="row">
+
+        @using (Html.BeginForm("Index", "Store", FormMethod.Post))
+        {
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="search" />
+                        <div class="input-group-append">
+                            <button type="submit" value="ShopName" class="btn btn-success ms-2">Search</button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-5 d-flex justify-content-end">
+                    <div class="btn-group" role="group">
+                        <a href="@Url.Action("Create", "Store", new {})" class="btn btn-dark">Create</a>
+                    </div>
+                </div>
+
+            </div>
+
+        }
+    </div>
+</div>
+
+
+<table class="table table-striped border table-hover mt-4">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Language)
+        </th>
+
+        <th>
+            Detail
+        </th>
+        <th>
+            Edit
+        </th>
+        <th>
+            Delete
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+
+            <td>
+
+                <div class="btn-group w-45" role="group">
+                    <a href="@Url.Action("Details", "Store", new {id=item.ShopId})" class="btn btn-success">Detail</a>
+                </div>
+            <td>
+                <div class="btn-group w-45" role="group">
+                    <a href="@Url.Action("Edit", "Store", new {id=item.ShopId})" class="btn btn-primary">Edit</a>
+                </div>
+            </td>
+            <td>
+                <div class="btn-group w-45" role="group">
+                    <a href="@Url.Action("Delete", "Store", new {id=item.ShopId})" class="btn btn-danger">Delete</a>
+                </div>
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
+
+

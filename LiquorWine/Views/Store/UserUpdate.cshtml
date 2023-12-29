@@ -1,0 +1,142 @@
+﻿@model LiquorWine.Models.ShopTb
+
+@{
+    ViewBag.Title = "UserUpdate";
+}
+
+@using (Html.BeginForm("UserUpdate", "Store", FormMethod.Post))
+{
+    <head>
+        <link href="~/stylecss/StyleSheet.css" rel="stylesheet" />
+    </head>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="user-profile">
+                    <div class="user-profile-image">
+                        <input type="file" class="d-none" id="Inputuploadfile"  />
+                        <img src="~/Photo/camera.jpg" class="img-thumbnail" id="uploadImage" />
+                        <div class="upload-photo">
+                            <div class="image-content">
+                                <!-- Add content related to the second image here -->
+                                <p>Upload Image</p>
+                            </div>
+                            <img src="~/Photo/camera.jpg" class="img-thumbnail" id="upload2-image" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                @Html.HiddenFor(model => model.ShopId)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShopName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShopName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OwnerName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OwnerName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.OwnerName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OwnerName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShopPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShopPhone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShopPhone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShopEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShopEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShopEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShopAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShopAddress, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShopAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <label class="form-check-inline">
+                            @Html.RadioButtonFor(model => model.Gender, "Male", new { htmlAttributes = new { @class = "form-check-input" } })
+                            Male
+                        </label>
+                        <label class="form-check-inline">
+                            @Html.RadioButtonFor(model => model.Gender, "Female", new { htmlAttributes = new { @class = "form-check-input" } })
+                            Female
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Language,
+                            new SelectList(new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "CSharp", Value = "CSharp" },
+                                new SelectListItem { Text = "Java", Value = "Java" },
+                                new SelectListItem { Text = "Python", Value = "Python" }
+                            }, "Value", "Text"),
+                            "-- Select Language -- ", // Optional: Add a default option
+                            new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group mt-3">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $('#uploadImage').click(function () {
+            uploadClickEvent();
+        })
+        $('#upload2-image').click(function () {
+            uploadClickEvent();
+        })
+        function uploadClickEvent() {
+            $('#Inputuploadfile').trigger('click')
+        }
+        $('#Inputuploadfile').change(function () {
+            if (this.files && this.files[0]) {
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(this.files[0]);
+                fileReader.onload = function (e) {
+                    $('#uploadImage').attr('src', e.target.result);
+                }
+            }
+        });
+    </script>
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LiquorModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LiquorTb">
+    <Key>
+      <PropertyRef Name="LiquorId" />
+    </Key>
+    <Property Name="ShopId" Type="Int32" />
+    <Property Name="LiquorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LiquorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LiquorQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LiquorImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LiquorAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ShopTb" Relationship="Self.FK_LiquorTb_ShopTb" FromRole="LiquorTb" ToRole="ShopTb" />
+  </EntityType>
+  <EntityType Name="ShopTb">
+    <Key>
+      <PropertyRef Name="ShopId" />
+    </Key>
+    <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShopName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OwnerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ShopPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ShopEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ShopAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LiquorTbs" Relationship="Self.FK_LiquorTb_ShopTb" FromRole="ShopTb" ToRole="LiquorTb" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_LiquorTb_ShopTb">
+    <End Role="ShopTb" Type="Self.ShopTb" Multiplicity="0..1" />
+    <End Role="LiquorTb" Type="Self.LiquorTb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShopTb">
+        <PropertyRef Name="ShopId" />
+      </Principal>
+      <Dependent Role="LiquorTb">
+        <PropertyRef Name="ShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LiquorEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LiquorTbs" EntityType="Self.LiquorTb" />
+    <EntitySet Name="ShopTbs" EntityType="Self.ShopTb" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_LiquorTb_ShopTb" Association="Self.FK_LiquorTb_ShopTb">
+      <End Role="ShopTb" EntitySet="ShopTbs" />
+      <End Role="LiquorTb" EntitySet="LiquorTbs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
